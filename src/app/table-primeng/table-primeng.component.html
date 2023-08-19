@@ -1,0 +1,103 @@
+<ng-container>
+<div class="container">
+  <p-table
+  [value]="cars"
+  class="custom-table"
+  dataKey="brand"
+  [paginator]="true"
+  [rows]="7"
+  [tableStyle]="{ 'min-width': '50rem' }"
+  >
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="brand">Brand <p-sortIcon field="brand"></p-sortIcon></th>
+      <th pSortableColumn="color">ID <p-sortIcon field="id"></p-sortIcon></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-car let-expanded="expanded">
+    <tr>
+      <td>
+          <button type="button" pButton pRipple [pRowToggler]="car"
+          class="p-button-text p-button-rounded p-button-plain"
+          [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'">
+          </button>
+          {{ car.brand }}
+        </td>
+        <td>{{ car.id }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-car>
+      <tr>
+          <td colspan="7">
+            <div class="p-3">
+              <p-table [value]="car.corpo" dataKey="ano">
+                      <ng-template pTemplate="header">
+                        <tr>
+                              <th pSortableColumn="ano">Ano <p-sortIcon field="ano"></p-sortIcon></th>
+                              <th pSortableColumn="preco">Preco<p-sortIcon field="preco"></p-sortIcon></th>
+                              <th pSortableColumn="preco">Cor<p-sortIcon field="preco"></p-sortIcon></th>
+                            </tr>
+                          </ng-template>
+                          <ng-template pTemplate="body" let-corpo>
+                            <tr>
+                              <td>{{ corpo.ano }}</td>
+                              <td>{{ corpo.preco | currency: 'BRL' }}</td>
+                              <td>
+                              <i class="pi pi-circle-fill"
+                              [ngStyle]="{'color': corpo.color, 'border': '1px solid #000 ',
+                               'border-radius': '50%',' font-size': '5rem'}"></i>
+                                {{ corpo.color}}</td>
+                            </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage">
+                          <tr>
+                            <td colspan="6">There are no car for this brand yet.</td>
+                          </tr>
+                        </ng-template>
+                      </p-table>
+              </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  </ng-container>
+
+    <!--
+<h3 class="first">Toggleable Row Groups</h3>
+<p-table [value]="cars" dataKey="brand">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Vin</th>
+            <th>Year</th>
+            <th>Color</th>
+          </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" let-expanded="expanded" let-columns="columns">
+        <tr class="ui-widget-header" *ngIf="rowGroupMetadata[rowData.brand].index === rowIndex">
+            <td colspan="3">
+                <a href="#" [pRowToggler]="rowData">
+                    <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                    <span>{{rowData.brand}}</span>
+                </a>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-rowData let-rowIndex="rowIndex" let-rowData.viewDetails="false">
+        <tr>
+            <td>{{rowData.vin}}
+                    <i (click)="rowData.viewDetails = !rowData.viewDetails" [ngClass]="rowData.viewDetails ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+            </td>
+            <td>{{rowData.year}}</td>
+            <td>{{rowData.color}}</td>
+        </tr>
+        <ng-container *ngTemplateOutlet="extensiontemplate; context: rowData"></ng-container>
+        <ng-template #extensiontemplate>
+            <tr *ngIf="rowData.viewDetails">
+                <td colspan="3">
+                    Additional row data here for VIN ID: {{rowData.vin}}
+                </td>
+            </tr>
+        </ng-template>
+    </ng-template>
+</p-table> -->

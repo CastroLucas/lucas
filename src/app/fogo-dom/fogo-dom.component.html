@@ -1,0 +1,20 @@
+<div class="container">
+  <table>
+    <tr *ngFor="let row of firePixelArray; let i = index">
+      <div *ngIf="!debbug">
+        <td class='pixel' *ngFor="let cell of row; let j = index" [ngStyle]="{'background-color': renderFire(i,j)}"></td>
+      </div>
+      <div  *ngIf="debbug">
+        <td *ngFor="let cell of row; let j = index" [ngStyle]="{'background-color': renderFire(i,j)}">
+          <ng-container class='debbug' *ngIf="debbug">
+            <div class="index">
+              {{ (i*row.length)+j }}
+            </div>
+            {{ cell }}
+      </ng-container>
+    </td></div>
+  </tr>
+</table>
+
+
+</div>

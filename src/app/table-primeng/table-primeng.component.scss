@@ -1,0 +1,25 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+@import '~primeicons/primeicons.css';
+
+
+
+.container{
+  font-family: 'Times New Roman', Times, serif;
+  color: red;
+  width: 50rem;
+  height: 50rem;
+}
+/* CSS */
+.custom-table {
+  width: 300px; /* Largura da tabela em pixels */
+  height: 500px; /* Altura da tabela em pixels */
+  border-collapse: collapse; /* Junta as bordas das células */
+}
+
+.custom-table th, .custom-table td {
+  width: 10%; /* Largura das células em relação à largura da tabela */
+  padding: 10px; /* Espaçamento interno das células */
+  border: 1px solid black; /* Borda das células */
+}
