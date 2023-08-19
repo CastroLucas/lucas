@@ -21,27 +21,6 @@ export class TablePrimengComponent implements OnInit {
   color: string[] = ['Black', 'Orange', 'Red', 'Blue', 'Gray', 'White', 'Yellow', 'Green'];
   rowGroupMetadata: any;
 
-    //   updateRowGroupMetaData() {
-    //     this.rowGroupMetadata = {};
-    //     if (this.cars) {
-    //         for (let i = 0; i < this.cars.length; i++) {
-    //             let rowData = this.cars[i];
-    //             let brand = rowData.brand;
-    //             if (i == 0) {
-    //                 this.rowGroupMetadata[brand] = { index: 0, size: 1 };
-    //             }
-    //             else {
-    //                 let previousRowData = this.cars[i - 1];
-    //                 let previousRowGroup = previousRowData.brand;
-    //                 if (brand === previousRowGroup)
-    //                     this.rowGroupMetadata[brand].size++;
-    //                 else
-    //                     this.rowGroupMetadata[brand] = { index: i, size: 1 };
-    //             }
-    //         }
-    //     }
-    // }
-
   constructor() {
     this.cols = [
       { field: 'id', header: 'id' },
@@ -63,21 +42,42 @@ export class TablePrimengComponent implements OnInit {
   }
   ngOnInit(): void {
 
-    this.cars.forEach(element => {
-      let randomNumber = Math.floor(Math.random()*7)
-      for (let i = 0; i < randomNumber; i++) {
-        element.corpo.push(this.criaCorpo());
+    this.cars.forEach( element => {
+      let randomNumber = Math.floor ( Math.random() * 10 )
+      for ( let i = 0 ; i < randomNumber ; i++ ) {
+        element.corpo.push( this.criaCorpo() );
       }
     });
-
-    console.log(this.cars);
+    console.log( this.cars );
 
   }
   criaCorpo(){
+    let randomNumber = Math.floor( Math.random() * 13 );
     return {
-      preco: Math.floor(Math.random()*50000) + 10000,
-      ano: 2010 + Math.floor(Math.random()*13),
-      color: this.color[Math.floor(Math.random()*this.color.length)]
+      preco: ( Math.floor( Math.random() * 2000 ) + 20000 ) * ( randomNumber + 1 ),
+      ano: 2010 + randomNumber,
+      color: this.color[ Math.floor( Math.random() * this.color.length ) ]
     }
   }
+
+      //   updateRowGroupMetaData() {
+      //     this.rowGroupMetadata = {};
+      //     if (this.cars) {
+      //         for (let i = 0; i < this.cars.length; i++) {
+      //             let rowData = this.cars[i];
+      //             let brand = rowData.brand;
+      //             if (i == 0) {
+      //                 this.rowGroupMetadata[brand] = { index: 0, size: 1 };
+      //             }
+      //             else {
+      //                 let previousRowData = this.cars[i - 1];
+      //                 let previousRowGroup = previousRowData.brand;
+      //                 if (brand === previousRowGroup)
+      //                     this.rowGroupMetadata[brand].size++;
+      //                 else
+      //                     this.rowGroupMetadata[brand] = { index: i, size: 1 };
+      //             }
+      //         }
+      //     }
+      // }
 }
