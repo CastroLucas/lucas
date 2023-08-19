@@ -42,7 +42,7 @@ export class TablePrimengComponent implements OnInit {
     //     }
     // }
 
-  constructor(private datePipe: DatePipe) {
+  constructor() {
     this.cols = [
       { field: 'id', header: 'id' },
       { field: 'brand', header: 'Brand' }
